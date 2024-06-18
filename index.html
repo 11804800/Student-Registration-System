@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<!-- ====================================================================================Head ===================================================================== -->
+  <!-- ====================================================================================Head ===================================================================== -->
   <head>
-
     <!-- ============================================================Basic Meta tags ======================================-->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,7 +18,6 @@
 
   <!-- =====================================================================================Body==================================================================== -->
   <body>
-
     <!-- ==================================================================================Header ==================================================================-->
     <header>
       <h2>Student Registration System</h2>
@@ -29,26 +25,21 @@
 
     <!-- =====================================================================================Main================================================================== -->
     <main>
-
       <!-- ---------------------------------------------------------------Student registration form Article --------------------------------------->
-      <article id="student-registration-form-article" >
-
+      <article id="student-registration-form-article">
         <!-- --------------------------------------------------------form Section ----------------------------------------->
         <section id="student-register-form-section">
-
           <!---------------------------------- form heading section------------------------------ -->
           <section id="student-register-form-sub-section">
-            <h3>Student Registration Form</h3>
+            <h3 id="form-title">Student Registration Form</h3>
             <button id="form-close-btn">&times;</button>
           </section>
 
           <!-- ------------------------------------Student Registration Form ---------------------->
           <form id="student-register-form">
-
             <!--------------------------- Name inputs ------------------------------->
             <label class="form-label" for="name">Name</label>
             <div>
-              
               <!-- Required: This attribute will not allow the user to submit any empty input it is used  in all the inputs -->
               <input
                 type="text"
@@ -79,26 +70,26 @@
               required
             />
             <!-- Id validation message -->
-            <p class="form-validators-message" id="for_id">Must be of three digit</p>
+            <p class="form-validators-message" id="for_id">
+              Must be of three digit
+            </p>
 
             <!-- ----------------------Email input -------------------------------------->
-            <label class="form-label" for="student-email">
-              Email Id
-            </label>
+            <label class="form-label" for="student-email"> Email Id </label>
             <input
-              type="text"
+              type="email"
               placeholder="example@gmail.com"
               class="form-inputs"
               required
               name="email"
               id="student-email"
             />
-            <p class="form-validators-message" id="for_email">It Should be email only</p>
+            <p class="form-validators-message" id="for_email">
+              It Should be email only
+            </p>
 
             <!-- -------------------------------Contact input-------------------------- -->
-            <label class="form-label" for="contact-no"
-              > Contact No</label
-            >
+            <label class="form-label" for="contact-no"> Contact No</label>
             <input
               type="number"
               placeholder="example 0123456789"
@@ -107,7 +98,9 @@
               id="contactno"
               name="contact-no"
             />
-            <p class="form-validators-message" id="for_contactNo">Must be of 10 digit atleast</p>
+            <p class="form-validators-message" id="for_contactNo">
+              Must be of 10 digit atleast
+            </p>
 
             <!-- -----------------------form submit btn------------------------------------ -->
             <input type="submit" value="Register" id="submit-btn" />
@@ -115,25 +108,101 @@
         </section>
       </article>
 
-    <!-- ===========================================================================student-record-display-article ======================================================-->
-      <article id="student-record-display-article">
+      <!-- ===========================================================================student-record-update-article ======================================================-->
 
+      <article id="student-record-update-article">
+        <section id="student-record-update-section">
+          <section id="student-record-update-sub-section">
+            <h3>Student Update From</h3>
+            <button id="edit-form-close-btn">&times;</button>
+          </section>
+          <form id="student-update-form">
+            <!-- -------------------------------Student id input--------------------- -->
+            <!-- Id Will be unique so it will not be updated -->
+            <label class="form-label" for="student-id">Id</label>
+            <input
+              type="number"
+              placeholder="Student Id"
+              id="student-id1"
+              name="studentid1"
+              class="form-inputs"
+              required
+              disabled
+            />
+            <!--------------------------- Name inputs ------------------------------->
+            <label class="form-label" for="name">Name</label>
+            <div>
+              <!-- Required: This attribute will not allow the user to submit any empty input it is used  in all the inputs -->
+              <input
+                type="text"
+                placeholder="first name"
+                id="firstname1"
+                name="name"
+                class="form-inputs"
+                required
+              />
+              <input
+                type="text"
+                placeholder="last name"
+                id="lastname1"
+                name="name"
+                class="form-inputs"
+                required
+              />
+            </div>
+
+            <!-- ----------------------Email input -------------------------------------->
+            <label class="form-label" for="student-email"> Email Id </label>
+            <input
+              type="email"
+              placeholder="example@gmail.com"
+              class="form-inputs"
+              required
+              name="email1"
+              id="student-email1"
+            />
+            <p class="form-validators-message" id="for_email">
+              It Should be email only
+            </p>
+
+            <!-- -------------------------------Contact input-------------------------- -->
+            <label class="form-label" for="contact-no"> Contact No</label>
+            <input
+              type="number"
+              placeholder="example 0123456789"
+              class="form-inputs"
+              required
+              id="contactno1"
+              name="contact-no"
+            />
+            <p class="form-validators-message" id="for_contactNo">
+              Must be of 10 digit atleast
+            </p>
+
+            <!-- -----------------------form submit btn------------------------------------ -->
+            <input type="submit" value="Update" id="update-btn" />
+          </form>
+        </section>
+      </article>
+
+      <!-- ===========================================================================student-record-display-article ======================================================-->
+      <article id="student-record-display-article">
         <!-- =====================================================Student record display section=============================================================== -->
         <section id="student-record-section">
-
           <!-- ================================Student record heading section ======================================================================-->
           <section>
             <!-- table heading  -->
             <h2 class="table-heading">Student Information Table</h2>
 
             <!-- =============================Add new Student record btn========================= -->
-             <!-- When it will be clicked a modal will appear on the screen that will contain a student registration form -->
-            <button class="Add-new-btn" id="Add-new-student-btn">Add New Student</button>
+            <!-- When it will be clicked a modal will appear on the screen that will contain a student registration form -->
+            <button class="Add-new-btn" id="Add-new-student-btn">
+              Add New Student
+            </button>
           </section>
 
           <!--=============================================== Student record displaying table============================================= -->
           <table id="student-information-table">
-
             <!-- table head -->
             <thead id="table_head">
               <!-- table head row -->
@@ -147,8 +216,7 @@
             </thead>
 
             <!-- table body -->
-            <tbody id="table_body">
-            </tbody>
+            <tbody id="table_body"></tbody>
           </table>
 
           <!-- This will be displayed when no data will be their to show on table -->
