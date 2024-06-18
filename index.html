@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- ====================================================================================Head ===================================================================== -->
+  <head>
+
+    <!-- ============================================================Basic Meta tags ======================================-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- link:icon for showing the icon with the title at tab -->
+    <link rel="shortcut icon" href="./Icon1.png" type="image/x-icon" />
+
+    <!-- title: Setting the website title name -->
+    <title>Student Registration System</title>
+
+    <!-- link:css Attaching the external css file -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <!-- =====================================================================================Body==================================================================== -->
+  <body>
+
+    <!-- ==================================================================================Header ==================================================================-->
+    <header>
+      <h2>Student Registration System</h2>
+    </header>
+
+    <!-- =====================================================================================Main================================================================== -->
+    <main>
+
+      <!-- ---------------------------------------------------------------Student registration form Article --------------------------------------->
+      <article id="student-registration-form-article" >
+
+        <!-- --------------------------------------------------------form Section ----------------------------------------->
+        <section id="student-register-form-section">
+
+          <!---------------------------------- form heading section------------------------------ -->
+          <section id="student-register-form-sub-section">
+            <h3>Student Registration Form</h3>
+            <button id="form-close-btn">&times;</button>
+          </section>
+
+          <!-- ------------------------------------Student Registration Form ---------------------->
+          <form id="student-register-form">
+
+            <!--------------------------- Name inputs ------------------------------->
+            <label class="form-label" for="name">Name</label>
+            <div>
+              
+              <!-- Required: This attribute will not allow the user to submit any empty input it is used  in all the inputs -->
+              <input
+                type="text"
+                placeholder="first name"
+                id="firstname"
+                name="name"
+                class="form-inputs"
+                required
+              />
+              <input
+                type="text"
+                placeholder="last name"
+                id="lastname"
+                name="name"
+                class="form-inputs"
+                required
+              />
+            </div>
+
+            <!-- -------------------------------Student id input--------------------- -->
+            <label class="form-label" for="student-id">Id</label>
+            <input
+              type="number"
+              placeholder="Student Id"
+              id="student-id"
+              name="studentid"
+              class="form-inputs"
+              required
+            />
+            <!-- Id validation message -->
+            <p class="form-validators-message" id="for_id">Must be of three digit</p>
+
+            <!-- ----------------------Email input -------------------------------------->
+            <label class="form-label" for="student-email">
+              Email Id
+            </label>
+            <input
+              type="text"
+              placeholder="example@gmail.com"
+              class="form-inputs"
+              required
+              name="email"
+              id="student-email"
+            />
+            <p class="form-validators-message" id="for_email">It Should be email only</p>
+
+            <!-- -------------------------------Contact input-------------------------- -->
+            <label class="form-label" for="contact-no"
+              > Contact No</label
+            >
+            <input
+              type="number"
+              placeholder="example 0123456789"
+              class="form-inputs"
+              required
+              id="contactno"
+              name="contact-no"
+            />
+            <p class="form-validators-message" id="for_contactNo">Must be of 10 digit atleast</p>
+
+            <!-- -----------------------form submit btn------------------------------------ -->
+            <input type="submit" value="Register" id="submit-btn" />
+          </form>
+        </section>
+      </article>
+
+    <!-- ===========================================================================student-record-display-article ======================================================-->
+      <article id="student-record-display-article">
+
+        <!-- =====================================================Student record display section=============================================================== -->
+        <section id="student-record-section">
+
+          <!-- ================================Student record heading section ======================================================================-->
+          <section>
+            <!-- table heading  -->
+            <h2 class="table-heading">Student Information Table</h2>
+
+            <!-- =============================Add new Student record btn========================= -->
+             <!-- When it will be clicked a modal will appear on the screen that will contain a student registration form -->
+            <button class="Add-new-btn" id="Add-new-student-btn">Add New Student</button>
+          </section>
+
+          <!--=============================================== Student record displaying table============================================= -->
+          <table id="student-information-table">
+
+            <!-- table head -->
+            <thead id="table_head">
+              <!-- table head row -->
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email Id</th>
+                <th>Contact No</th>
+                <th>Operation</th>
+              </tr>
+            </thead>
+
+            <!-- table body -->
+            <tbody id="table_body">
+            </tbody>
+          </table>
+
+          <!-- This will be displayed when no data will be their to show on table -->
+          <!-- <section id="No-Data-display">
+            <h2>No Record to Display</h2>
+            <p>Insert New Record Now</p>
+            <button class="Add-new-btn" id="Add-new-btns">Add New Student</button>
+          </section> -->
+        </section>
+      </article>
+    </main>
+
+    <!-- ==============================================================================Footer========================================================================= -->
+    <footer>
+      <p>Copyright@2024 Student Registration System</p>
+    </footer>
+
+    <!-- ====================================================================Attacted javascript file using script tag ================================================-->
+    <script src="./script.js"></script>
+  </body>
+</html>
