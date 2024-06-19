@@ -63,28 +63,29 @@
             <label class="form-label" for="student-id">Id</label>
             <input
               type="number"
-              placeholder="Student Id"
+              placeholder="Enter Student Id {3 digits}"
               id="student-id"
               name="studentid"
               class="form-inputs"
               required
             />
             <!-- Id validation message -->
-            <p class="form-validators-message" id="for_id">
+            <p class="form-validators-message" id="invalid_id">
               Must be of three digit
             </p>
+            <p class="form-validators-message" id="Id_exists">This Id Already Exists</p>
 
             <!-- ----------------------Email input -------------------------------------->
             <label class="form-label" for="student-email"> Email Id </label>
             <input
               type="email"
-              placeholder="example@gmail.com"
+              placeholder="Enter Email Id"
               class="form-inputs"
               required
               name="email"
               id="student-email"
             />
-            <p class="form-validators-message" id="for_email">
+            <p class="form-validators-message" id="invalid_email">
               It Should be email only
             </p>
 
@@ -92,14 +93,14 @@
             <label class="form-label" for="contact-no"> Contact No</label>
             <input
               type="number"
-              placeholder="example 0123456789"
+              placeholder="Enter Contact Number {10 digits}"
               class="form-inputs"
               required
               id="contactno"
               name="contact-no"
             />
-            <p class="form-validators-message" id="for_contactNo">
-              Must be of 10 digit atleast
+            <p class="form-validators-message" id="invalid_contact">
+             Enter a Valid Contact Number
             </p>
 
             <!-- -----------------------form submit btn------------------------------------ -->
@@ -155,13 +156,12 @@
             <label class="form-label" for="student-email"> Email Id </label>
             <input
               type="email"
-              placeholder="example@gmail.com"
               class="form-inputs"
               required
               name="email1"
               id="student-email1"
             />
-            <p class="form-validators-message" id="for_email">
+            <p class="form-validators-message" id="invalid_email1">
               It Should be email only
             </p>
 
@@ -169,13 +169,12 @@
             <label class="form-label" for="contact-no"> Contact No</label>
             <input
               type="number"
-              placeholder="example 0123456789"
               class="form-inputs"
               required
               id="contactno1"
               name="contact-no"
             />
-            <p class="form-validators-message" id="for_contactNo">
+            <p class="form-validators-message" id="invalid_contact1">
               Must be of 10 digit atleast
             </p>
 

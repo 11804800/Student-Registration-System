@@ -1,5 +1,12 @@
 //Initalizing the student information array
 
+//Creating patterns for form checking
+//Pattern: Id Validator for id must be of 3 digits
+const IdPattern = /^[0-9]\d{2}$/;
+
+//pattern for phone number
+const ContactPattern = /^[6-9]\d{9}$/;
+
 //Condition: If Student_Data is present in local storage then parse else return empty array;
 const Student_Data = localStorage.getItem("Student_Data")
   ? JSON.parse(localStorage.getItem("Student_Data"))
@@ -48,7 +55,10 @@ RenderStudentData();
 const form = document.getElementById("student-register-form");
 form.addEventListener("submit", (event) => {
   //   //preventing the default action of the form
-  //   event.preventDefault();
+
+  //Initializing the Pattern Boolean Initalially true
+  let IdPatternBoolean = true;
+  let ContactPatternBoolean = true;
 
   //Accessing all the fields value
   const name = event.target.firstname.value + " " + event.target.lastname.value;
@@ -58,22 +68,45 @@ form.addEventListener("submit", (event) => {
 
   //checking if the id already exists in the array
   const index1 = Student_Data.findIndex((item) => item.id === id);
-  console.log(index1);
-  //if it doesn't exist in the then add it to the array
-  if (index1<1) {
-    Student_Data.push({
-      name: name,
-      id: id,
-      email: email,
-      contactNo: contactNo,
-    });
-  }
-  else
-  {
-    event.preventDefault();
+
+  //Checking the  id Pattern
+  if (!IdPattern.test(id)) {
+    IdPatternBoolean = false;
+    document.getElementById("invalid_id").style.display = "flex";
+  } else {
+    IdPatternBoolean = true;
   }
 
-  localStorage.setItem("Student_Data", JSON.stringify(Student_Data));
+  //checking if  contact number passed the pattern test
+  if (!ContactPattern.test(contactNo)) {
+    ContactPatternBoolean = false;
+    document.getElementById("invalid_contact").style.display = "flex";
+  } else {
+    ContactPatternBoolean = true;
+  }
+
+  //Conditon: if Both the inputs match the pattern then only it will proceed
+  if (IdPatternBoolean && ContactPatternBoolean) {
+    //if it doesn't exist in the then add it to the array
+    if (index1 == -1) {
+      Student_Data.push({
+        name: name,
+        id: id,
+        email: email,
+        contactNo: contactNo,
+      });
+      //Saving to the local storage
+      localStorage.setItem("Student_Data", JSON.stringify(Student_Data));
+    } else {
+      //it will show message the id already exists
+      event.preventDefault();
+      document.getElementById("Id_exists").style.display = "flex";
+    }
+  }
+  //if doesnot match then stop from refreshing the page
+  else {
+    event.preventDefault();
+  }
 });
 
 //-----------------------creating delete function for deleting the student data------------------
@@ -107,12 +140,12 @@ Delete_btn.forEach((Delete_btn) => {
 //--------------------creating update/edit function for editing the student data-----------------
 
 //Creating a global variable called index to update the student data
-var index=-1;
+var index = -1;
 
 //fetching: all the edit buttons from dom
 const Edit_Btn = document.querySelectorAll(".edit-btn");
 
-const UpdateModal=document.querySelector("#student-record-update-article");
+const UpdateModal = document.querySelector("#student-record-update-article");
 //iterating: through all the edit buttons from the dom
 Edit_Btn.forEach((element) => {
   //adding: click event to all the edit buttons and passing the event
@@ -126,44 +159,58 @@ Edit_Btn.forEach((element) => {
     //condition :If the element id will match the id present int the table
     index = Student_Data.findIndex((Student) => Student.id == id);
 
-
     //Fetching:The From inputs and setting the value
-    document.getElementById("firstname1").value = `${Student_Data[index].name.split(" ")[0]}`;
-    document.getElementById("lastname1").value = Student_Data[index].name.split(" ")[1];
-    document.getElementById("student-id1").value =Student_Data[index].id;
+    document.getElementById("firstname1").value = `${
+      Student_Data[index].name.split(" ")[0]
+    }`;
+    document.getElementById("lastname1").value =
+      Student_Data[index].name.split(" ")[1];
+    document.getElementById("student-id1").value = Student_Data[index].id;
     document.getElementById("student-email1").value = Student_Data[index].email;
     document.getElementById("contactno1").value = Student_Data[index].contactNo;
     UpdateModal.style.display = "flex";
-
   });
 });
 
-//closing the update form 
-document.getElementById("edit-form-close-btn").addEventListener("click",()=>{
+//closing the update form
+document.getElementById("edit-form-close-btn").addEventListener("click", () => {
   UpdateModal.style.display = "none";
 });
 
-
-const UpdateForm=document.getElementById("student-update-form");
+const UpdateForm = document.getElementById("student-update-form");
 
 //handling the update form submit
-UpdateForm.addEventListener("submit",(event)=>{
-  
+UpdateForm.addEventListener("submit", (event) => {
+  //Initializing the Pattern Boolean Initalially true
+  let ContactPatternBoolean1 = true;
+
   //Accessing all the fields value
-  const name = event.target.firstname1.value + " " + event.target.lastname1.value;
+  const name =
+    event.target.firstname1.value + " " + event.target.lastname1.value;
   const id = event.target.studentid1.value;
   const email = event.target.email1.value;
   const contactNo = event.target.contactno1.value;
 
-  Student_Data[index]={
-    name: name,
-    id: id,
-    email: email,
-    contactNo: contactNo
+  //checking if  contact number passed the pattern test
+  if (!ContactPattern.test(contactNo)) {
+    ContactPatternBoolean1 = false;
+    document.getElementById("invalid_contact1").style.display = "flex";
+    event.preventDefault();
+  } else {
+    //updating the array
+    Student_Data[index] = {
+      name: name,
+      id: id,
+      email: email,
+      contactNo: contactNo,
+    };
+
+    //saving to the local storage
+    localStorage.setItem("Student_Data", JSON.stringify(Student_Data));
+    //setting the update modal display none
+    UpdateModal.style.display = "none";
+
+    //Setting the index again -1 so it will not update the value again
+    index = -1;
   }
-
-  localStorage.setItem("Student_Data", JSON.stringify(Student_Data));
-  UpdateModal.style.display = "none";
-  index=-1;
-
 });
